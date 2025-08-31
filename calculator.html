@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="display: flex; align-items: center; column-gap: 10px;">
+        <input type="text" id="calc" placeholder="enter numbers">
+        <button type="button" onclick="btn('+')">+</button>
+        <button type="button" onclick="btn('-')">-</button>
+        <button type="button" onclick="btn('*')">*</button>
+        <button type="button" onclick="btn('%')">%</button>
+        <button type="button" onclick="submit()">=</button>
+        <button type="button" onclick="refresh()">Refresh</button>
+    </div>
+    <br>
+    <div id="btns" style="display: flex; align-items: center; column-gap: 10px; flex-wrap: wrap; row-gap: 10px;">
+        <div style="flex-basis: 100%;">
+            <button type="button" onclick="btn('1')">1</button>
+            <button type="button" onclick="btn('2')">2</button>
+            <button type="button" onclick="btn('3')">3</button>
+            <button type="button" onclick="btn('4')">4</button>
+            <button type="button" onclick="btn('5')">5</button>
+        </div>
+        <div style="flex-basis: 100%;">
+            <button type="button" onclick="btn('6')">6</button>
+            <button type="button" onclick="btn('7')">7</button>
+            <button type="button" onclick="btn('8')">8</button>
+            <button type="button" onclick="btn('9')">9</button>
+            <button type="button" onclick="btn('0')">0</button>
+        </div>
+    </div>
+    <script>
+        const calc = document.querySelector("#calc")
+        function btn(val) {
+            calc.value = calc.value + val
+        }
+        function submit() {
+            let a = calc.value;
+            let b = a;
+            if(a.includes("+")) {
+                s = a.split("+");
+                b = Number(s[0]) + Number(s[1]);
+            }
+            else if(a.includes("-")) {
+                s = a.split("-");
+                b = Number(s[0]) - Number(s[1]);
+            }
+            else if(a.includes("*")) {
+                s = a.split("*");
+                b = Number(s[0]) * Number(s[1]);
+            }
+            else {
+                s = a.split("%");
+                b = Number(s[0]) % Number(s[1]);
+            }
+            calc.value = b;
+        }
+        function refresh() {
+            calc.value = "0"
+        }
+    </script>
+</body>
+</html>
