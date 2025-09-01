@@ -13,24 +13,24 @@
     }
 
     function playGame() {
-      let userChoice = prompt("Enter your choice: stone, paper, or scissor").toLowerCase();
+      let userInput = prompt("Enter your choice: stone, paper, or scissor").toLowerCase();
       let computerChoice = getComputerChoice();
       let result = "";
 
-      if (userChoice === computerChoice) {
-        result = "It's a draw! 🤝 Both chose " + userChoice;
+      if (userInput === computerChoice) {
+        result = "It's a draw! Both chose " + userInput;
       } else if (
-        (userChoice === "stone" && computerChoice === "scissor") ||
-        (userChoice === "paper" && computerChoice === "stone") ||
-        (userChoice === "scissor" && computerChoice === "paper")
+        (userInput === "stone" && computerChoice === "scissor") ||
+        (userInput === "paper" && computerChoice === "stone") ||
+        (userInput === "scissor" && computerChoice === "paper")
       ) {
-        result = "You Win! 🎉 " + userChoice + " beats " + computerChoice;
+        result = "You Win! " + userInput + " beats " + computerChoice;
       } else if (
-        userChoice === "stone" ||
-        userChoice === "paper" ||
-        userChoice === "scissor"
+        userInput === "stone" ||
+        userInput === "paper" ||
+        userInput === "scissor"
       ) {
-        result = "You Lose! 😢 " + computerChoice + " beats " + userChoice;
+        result = "You Lose!" + computerChoice + " beats " + userInput;
       } else {
         result = "Invalid choice! Please type stone, paper, or scissor.";
       }
