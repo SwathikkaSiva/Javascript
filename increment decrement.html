@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: blueviolet;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .calc-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: 10px;
+        }
+        #output, .incre, .decre {
+            border: 1px solid snow;
+            width: 100px;
+            background-color: black;
+            border-radius: 6px;
+            color: blueviolet;
+            font-weight: 600;
+            font-size: 30px;
+            height: 30px;
+            box-sizing: border-box;
+        }
+        #output {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .incre, .decre {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="calc-wrap">
+        <button onclick="increment()" class="incre">+</button>
+        <div id="output">0</div>
+        <button onclick="decrement()" class="decre">-</button>
+    </div>
+    <script>
+        let current=0;
+        
+        function increment() {
+            current++;
+            document.getElementById("output").innerHTML=current;
+        }
+        function decrement() {
+            if(current>0){
+            current--;
+            document.getElementById("output").innerHTML=current;
+            }
+            else {
+                alert("only positive value no negative value")
+            }
+        }
+    </script>
+</body>
+</html>

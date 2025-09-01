@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .mcq-btn-wrap {
+            display: flex;
+            column-gap: 10px;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function answera() {
+            document.getElementById("output").innerHTML="<strong>Answer : Wrong &#x2716;</strong>"
+        }
+        function answerb() {
+            document.getElementById("output").innerHTML="<strong>Answer : Correct &#x2714;</strong>"
+        }
+        function answerc() {
+            document.getElementById("output").innerHTML="<strong>Answer : Wrong &#x2716;</strong>"
+        }
+    </script>
+</head>
+<body>
+    <div class="mcq-wrap">
+        <div class="mcq-ques-wrap"><h1>Java Script Quiz</h1><div>console.log(0.1 + 0.2 === 0.3);</div></div>
+        <div class="mcq-btn-wrap"><button type="button" onclick="answera()">true</button><button type="button" onclick="answerb()">false</button><button type="button" onclick="answerc()">undefined</button></div>
+    </div>
+    <div id="output"></div>
+    <div style="margin-top: 10px; display: flex; justify-content: flex-end; width: 9%;"><button type="button">Next</button></div>
+    
+</body>
+</html>

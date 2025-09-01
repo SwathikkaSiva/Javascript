@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, html {
+            height: 100%;
+        }
+        body {
+            margin: 0 30%;
+        }
+        .parent {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            column-gap: 10px;
+            flex-wrap: wrap;
+        }
+        .box {
+            height: 100px;
+            flex-basis: calc(50% - 10px);
+            background-color: brown;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent" id="view">
+        <p class="box">para 1</p>
+        <p class="box">para 2</p>
+        <p class="box">para 3</p>
+        <p class="box">para 4</p>
+        <p class="box">para 5</p>
+        <p class="box">para 6</p>
+        <p class="box">para 7</p>
+        <p class="box">para 8</p>
+        <p class="box">para 9</p>
+        <p class="box">para 10</p>
+    </div>
+    <script>
+        let parent = document.getElementById("view")
+        const oddDivs = parent.querySelectorAll("p:nth-of-type(odd)");
+        console.log(oddDivs.length)
+        for(i=0;i<oddDivs.length;i++) {
+        oddDivs[i].style.backgroundColor="green";
+        oddDivs[i].style.flexBasis="calc(30% - 10px)";
+    }
+    </script>
+</body>
+</html>

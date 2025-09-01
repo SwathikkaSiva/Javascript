@@ -1,0 +1,47 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Random Background Color</title>
+</head>
+<body>
+
+<button onclick="changeColor()">Change Background</button>
+
+<script>
+function changeColor() {
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
+
+  document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+}
+</script>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random HEX Background</title>
+</head>
+<body>
+
+<button onclick="changeHexColor()">Change HEX Background</button>
+
+<script>
+// function changeHexColor() {
+//   let randomHex = "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+//   document.body.style.backgroundColor = randomHex;
+// }
+function changeHexColor() {
+setInterval(() => {
+  let color = "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+  document.body.style.backgroundColor = color;
+}, 500);
+}
+
+</script>
+
+</body>
+</html>

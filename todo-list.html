@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="display: flex; align-items: center; justify-content: center; column-gap: 20px;">
+        <input type="textarea" id="todo-cntrl">
+        <button type="button" onclick="todolist()">Add</button>
+        <button type="button" onclick="clearall()">Clear All</button>
+    </div>
+    <ul id="task-list" style="display: flex; align-items: center; justify-content: center; flex-direction: column;"></ul>
+    <script>
+        function todolist() {
+            let input = document.getElementById("todo-cntrl");
+            let task = input.value;
+            if(task=="") {
+                alert("please enter something");
+                return;
+            }
+
+            let li = document.createElement("li");
+            li.innerHTML = task + "<br>";
+            li.style.cursor="pointer"
+
+            li.onclick=function() {
+                li.remove();
+             }
+
+            document.getElementById("task-list").appendChild(li);
+            input.value="";
+
+
+            // function removelist(button) {
+            //     button.parentElement.remove();
+            // }
+        }
+        function clearall() {
+            let input = document.getElementById("todo-cntrl");
+            let task = input.value;
+            let clear = document.getElementById("task-list")
+            if (clear.children.length==0) {
+                alert("please enter something");
+            }
+            
+            else {
+                clear.innerHTML = "";
+            }
+        }
+    </script>
+</body>
+</html>

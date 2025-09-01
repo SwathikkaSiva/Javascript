@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #random-num {
+            display: none;
+        }
+        body {
+            background-color: grey;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 50%;
+        }
+        .main-wrap {
+            border: 1px solid #fff;
+            width: auto;
+            padding: 10px;
+        }
+        input, button {
+            height: 30px;
+            border-radius: 6px;
+            outline: 0 !important;
+            border: 1px solid #000;
+            color: #000;
+            font-weight: 600;
+            background-color: #fff;
+            padding-left: 10px;
+        }
+        input:focus, button:focus {
+            border: 2px solid #000;
+        }
+        #correct {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        @keyframes shake {
+            0%, 100% {
+                transform: translate(0);
+            }
+            20%, 60% {
+                transform: translate(-5px);
+            }
+            40%, 80% {
+
+                transform: translate(5px);
+            }
+        }
+        .shake {
+            animation: shake 0.4s;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-wrap">
+        <div style="color: #fff; font-weight: 600; font-size: 20px;">Guess The Number Challenge from 1 to 10</div>
+        <div id="random-num"></div>
+        <div style="display: flex; align-items: center; justify-content: center; column-gap: 10px; padding-top: 10px;">
+            <input type="number" id="number">
+            <button onclick="random()">Guess</button>
+        </div>
+        <div id="correct"></div>
+    </div>
+    <script>
+        function random() {
+            let control = document.getElementById("number").value
+            let num = document.getElementById("random-num")
+            num = Math.floor(Math.random()*10)+1;
+            if(num==control) {
+                document.getElementById("correct").innerHTML = `<strong>Answer: Correct &#x2714;</strong>`;
+                document.getElementById("correct").classList.add("shake");
+            }
+            else if(control=="") {
+                alert("pls enter something");
+            }
+            else {
+                document.getElementById("correct").innerHTML = `<strong>Answer: Wrong &#x2716;</strong>`;
+                document.getElementById("correct").classList.add("shake");
+            }
+        }
+    </script>
+</body>
+</html>

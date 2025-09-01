@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+            border: 1px dotted red;
+            color: red;
+            background-color: black;
+            font-weight: 600;
+            font-family: 'Courier New', Courier, monospace;
+            height: 50px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 2px 2px 25px rgb(251, 53, 109);
+        }
+        button, input {
+            height: 30px;
+            background-color: red;
+            color: black;
+            border: 1px solid black;
+            padding: 1px 2px !important;
+            box-sizing: border-box;
+            font-weight: 600;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-basis: calc(14.2% - 20px);
+            box-shadow: 2px 2px 4px gray;
+        }
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>click below any one</h1>
+    <div>
+    <button onclick="calculator('addition')">Addition</button>
+    <button onclick="calculator('subtraction')">Subtraction</button>
+    <button onclick="calculator('multiplication')">Multiplication</button>
+    <button onclick="calculator('division')">Division</button>
+    <button onclick="calculator('modulus')">Modulus</button>
+    <input id="xvalue">
+    <input id="yvalue">
+    </div>
+    <p id="result"></p>
+    <script>
+        function calculator(asmd){
+        let x=Number(document.getElementById("xvalue").value);
+        let y=Number(document.getElementById("yvalue").value);
+        let value;
+        switch (asmd) {
+            case "addition":
+                value=x+y;
+                break;
+            case "subtraction":
+                value=x-y;
+                break;
+            case "multiplication":
+                value=x*y;
+                break;
+            case "division":
+                value=x/y;
+                break;
+            case "modulus":
+                value=x%y;
+                break;
+            default:
+                value=0;
+        }
+        document.getElementById("result").innerHTML=`${x} + ${y} = ${value}`
+        }
+    </script>
+</body>
+</html>
