@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Javascript Set Property</h1>
+    <p id="clock"></p>
+    <button type="button" onclick="showalert()">Show Alert</button>
+    <button type="button" onclick="showconfirm()">Show Confirm</button>
+    <button type="button" onclick="showprompt()">Show prompt</button>
+    <button type="button" onclick="shownewtab()">Open New Window</button>
+    <button type="button" onclick="stopclock()">Stop Clock</button>
+    <div id="output" style="margin-top: 10px;"></div>
+    <script>
+        function showalert() {
+            alert("This is an alert message")
+        }
+        function showconfirm() {
+            var userconfirmed = confirm("do you want to proceed")
+            if(userconfirmed) {
+                document.getElementById("output").innerHTML = "User Confirmed!!:)"
+            }
+            else {
+                document.getElementById("output").innerHTML = "User cancelled!!:("
+            }
+        }
+        function showprompt() {
+            var userInput = prompt('Please Enter Your Name:', 'Guest')
+            if (userInput != null) {
+                document.getElementById("output").innerHTML = 'Hello'+ ' ' + userInput + '!!'
+            }
+            else {
+                document.getElementById("output").innerHTML = "Hello Guest !!"
+            }
+        }
+        function shownewtab() {
+            window.open('http://www.google.com', 'blank', 'width=800', 'height=800');
+        }
+        var clockinterval = setInterval(function() {
+            var now = new Date();
+            var timestring = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
+            document.getElementById('clock').innerHTML = 'Currennt Time: ' + timestring;
+        }, 1000);
+        function stopclock() {
+            clearInterval (clockinterval);
+            document.getElementById('clock').innerText = 'clock Stopped!!';
+        }
+        setInterval (function() {
+            alert('this alert shown after 5 sec')
+        }, 5000);
+    </script>
+</body>
+</html>
