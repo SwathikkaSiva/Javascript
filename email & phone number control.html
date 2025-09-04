@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validation Form</title>
+</head>
+<body>
+  <div style="display: flex; column-gap: 10px;">
+    <div style="display: flex; flex-direction: column; row-gap: 10px;">
+      <label>Email</label>
+      <input type="text" id="emailid" placeholder="abc@gmail.com">
+    </div>
+    <div style="display: flex; flex-direction: column; row-gap: 10px;">
+      <label>Phone Number</label>
+      <!-- changed to lowercase 'phonenum' -->
+      <input type="text" id="phonenum" placeholder="9879679880">
+    </div>
+    <div>
+      <button type="button" onclick="submitForm()">Submit</button>
+    </div>
+  </div>
+
+  <script>
+    function submitForm() {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const phoneRegex = /^\d{10}$/; // ensures exactly 10 digits
+
+      let email = document.getElementById("emailid").value.trim();
+      let phoneNum = document.getElementById("phonenum").value.trim();
+
+      if (email === "" || phoneNum === "") {
+        alert("Please enter something");
+      } 
+      else if (emailRegex.test(email) && phoneRegex.test(phoneNum)) {
+        alert("Your email & phone number are correct & saved successfully");
+      } 
+      else {
+        alert("Please enter the correct email & phone number");
+      }
+    }
+  </script>
+</body>
+</html>
