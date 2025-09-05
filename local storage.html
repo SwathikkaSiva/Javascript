@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LocalStorage Form Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="email"], select, textarea {
+      display: block;
+      margin: 10px 0;
+      padding: 8px;
+      width: 200px;
+    }
+    .output {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>User Information Form</h2>
+  <form id="userForm">
+    <label>
+      Employee Name:
+      <input type="text" id="name" required>
+    </label>
+    <label>
+      Employee ID:
+      <input type="text" id="id" required>
+    </label>
+    <label>
+      Age:
+      <input type="number" id="age" required>
+    </label>
+    <label>
+      About Work:
+    </label>
+    <select id="work" required>
+        <option>--Select--</option>
+        <option>Fresher</option>
+        <option>Experienced</option>
+    </select>
+    <label>
+      Email:
+      <input type="email" id="email" required>
+    </label>
+    <label>
+      Address:
+      <textarea id="addr" required></textarea>
+    </label>
+    <label>
+      Gender:
+    </label><br><br>
+    <input type="radio" name="gender" value="Male" required> Male
+    <input type="radio" name="gender" value="Female"> Female
+    <br><br>
+    <label>
+      Work Mode:
+    </label><br><br>
+    <input type="checkbox" name="mode" value="WFO" required> WFO
+    <input type="checkbox" name="mode" value="WFH"> WFH
+    <input type="checkbox" name="mode" value="hybrid"> Hybrid
+    <br><br>
+    <button type="submit">Save</button>
+    <button type="button" id="loadBtn">Load Data</button>
+  </form>
+
+  <div class="output" id="output"></div>
+
+  <script>
+    const form = document.getElementById("userForm");
+    const output = document.getElementById("output");
+    const loadBtn = document.getElementById("loadBtn");
+
+    
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const employeid = document.getElementById("id").value;
+      const age = document.getElementById("age").value;
+      const email = document.getElementById("email").value;
+      const work = document.getElementById("work").value;
+      const address = document.getElementById("addr").value;
+      const gender = document.querySelector('input[name="gender"]:checked')?.value;
+      const mode = Array.from(document.querySelectorAll('input[name="mode"]:checked'))
+                          .map(cb => cb.value);
+
+      const userData = { name, employeid, age, email, work, address, gender, mode };
+
+      
+      localStorage.setItem("userData", JSON.stringify(userData));
+
+      output.innerHTML = "<b>Saved!</b> Data stored in localStorage.";
+      form.reset();
+    });
+
+    
+    loadBtn.addEventListener("click", function() {
+      const data = localStorage.getItem("userData");
+
+      if (data) {
+        const user = JSON.parse(data);
+        output.innerHTML = `
+          <p><b>Employee Name:</b> ${user.name}</p>
+          <p><b>Employee ID:</b> ${user.employeid}</p>
+          <p><b>About Work:</b> ${user.work}</p>
+          <p><b>Age:</b> ${user.age}</p>
+          <p><b>Email:</b> ${user.email}</p>
+          <p><b>Address:</b> ${user.address}</p>
+          <p><b>Gender:</b> ${user.gender}</p>
+          <p><b>Work Mode:</b> ${user.mode.join(", ")}</p>
+        `;
+      } else {
+        output.innerHTML = "<p>No data found in localStorage.</p>";
+      }
+    });
+  </script>
+</body>
+</html>
